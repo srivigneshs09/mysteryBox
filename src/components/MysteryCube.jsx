@@ -11,11 +11,78 @@ const MysteryCube = () => {
   const [selectedProduct, setSelectedProduct] = useState("");
 
   const productList = [
-    "Smartphone", "Laptop", "Tablet", "Headphones", "Smartwatch",
-    "Camera", "Speaker", "Keyboard", "Mouse", "Drone",
-    "Printer", "Smart Home Device", "VR Headset", "Gaming Console",
-    "Router", "Gamepad", "External Hard Drive", "Webcam",
-    "Projector", "Flash Drive",
+    "Pen", "Pencil", "Eraser", "Notebook", "Comb", "Clip", "Cup", 
+    "Phone", "Charger", "Bottle", "Spoon", "Toothbrush", "Chair", 
+    "Table", "T-shirt", "Shirt", "Glasses", "Watch", "Wallet", 
+    "Keys", "Bag", "Umbrella", "Headphones", "Towel", "Socks", 
+    "Shoes", "Camera", "Book", "Keypad", "Sunglasses case", "Paperweight", 
+    "Postcard", "Plant pot", "Stress ball", "Coasters", "Popcorn maker", 
+    "Chalkboard", "Playdough", "Flash drive", "Bowling ball", "Frisbee", 
+    "Hammock", "Puzzle", "Snow globe", "Paintbrush", "Ice cube tray", 
+    "Letter opener", "Pool float", "Bubble wrap", "Post-it dispenser", 
+    "Magnetic strip", "Battery charger", "Fridge magnet", "Cactus", 
+    "Pizza cutter", "Teacup", "Watering can", "Doormat", "Thermometer", 
+    "Hot pad", "Spatula", "Ruler", "Tongs", "Measuring spoons", "Compost bin", 
+    "Crockpot", "Travel pillow", "Carabiner", "Skateboard", "Pool cue", 
+    "Map", "Jigsaw puzzle", "Picture frame", "Bread box", "Yoga block", 
+    "Tupperware", "Dog leash", "Dog collar", "Pet carrier", "Hair straightener", 
+    "Headband", "Medals", "Marbles", "Shoelaces", "Garden hose", "Tea strainer", 
+    "Muffin tin", "Nutcracker", "Egg timer", "Gravy boat", "Whisk", "Sandals", 
+    "Apron", "Pizza stone", "Paper lantern", "Jenga blocks", "Vases", "Salt lamp", 
+    "Wallet chain", "Wind chimes", "Baking mat", "Milk frother", "Tea kettle", 
+    "Welcome sign", "Bug spray", "Safety pins", "Candle snuffer", "Cookie jar", 
+    "Plant mister", "Tarot cards", "Snow shovel", "Luggage tag", "Back scratcher", 
+    "Squeegee", "Tie rack", "Pet brush", "Tea infuser", "Tinsel", "Ice scraper", 
+    "Foldable chair", "Clothesline", "Wall hooks", "Apron", "Bean bag", "Ice pack", 
+    "Bathrobe", "Scooter", "Folding table", "Drumstick", "Hula hoop", "String lights", 
+    "Lantern", "Pizza pan", "Tupperware", "Outdoor mat", "LED strip lights", 
+    "Flashlight", "Paddle board", "Sleeping bag", "Card deck", "Frisbee", "Yoga mat", 
+    "Safety goggles", "Portable fan", "Picnic basket", "Bubble blower", "Pen holder", 
+    "Snow boots", "Trampoline", "Swing", "Sandcastle mold", "Corkscrew", "Raincoat", 
+    "Patch kit", "Hummingbird feeder", "Ice cream scoop", "Laundry basket", 
+    "Air conditioner filter", "Shoe rack", "Cupcake holder", "Tree swing", 
+    "Camera strap", "Keypad", "Potting soil", "Fruit bowl", "Tire pressure gauge", 
+    "Ice tray", "Canteen", "Fidget spinner", "Night light", "Makeup bag", "Luggage", 
+    "Tarp", "Sandpaper", "Pool noodles", "Sunglasses cleaner", "Sunhat", "Lazy Susan", 
+    "Windbreaker", "Paper punch", "Car mat", "Flash drive holder", "Gumball machine", 
+    "Roller skates", "Bike lock", "Travel mug", "Trivet", "Griddle", "Pop socket", 
+    "Measuring cups", "Trash can liner", "Seat cushion", "Car air freshener", 
+    "Baby wipes", "Walking stick", "Spice rack", "Money clip", "Record player", 
+    "Car window shade", "Picnic blanket", "Snow boots", "Hand warmer", "Sauna suit", 
+    "Teapot", "Medicine box", "Slippers", "Door mat", "Shoehorn", "Measuring tape", 
+    "Paper shredder", "Garden rake", "Sledgehammer", "Towel rack", "Slide projector", 
+    "Razor sharpener", "Parasol", "Ziplock bags", "Wall mirror", "Spork", "Beach bag", 
+    "Baby monitor", "Nail art kit", "Paint roller", "Tile cutter", "Chicken coop", 
+    "Roller blind", "Canister set", "Waffle maker", "Pen", "Notebook", "Phone", "Wallet", "Dress", "Shirt", "Pants", "Shoes", "Socks", 
+    "Comb", "Toothbrush", "Toothpaste", "Hairbrush", "Towel", "Shampoo", "Conditioner", 
+    "Body wash", "Soap", "Razor", "Deodorant", "Perfume", "Hand sanitizer", "Face wash", 
+    "Moisturizer", "Sunscreen", "Hand cream", "Lip balm", "Glasses", "Sunglasses", "Umbrella", 
+    "Hat", "Jacket", "Gloves", "Scarf", "Belt", "Earrings", "Necklace", "Ring", "Watch", 
+    "Laptop", "Charger", "Power bank", "Headphones", "Earphones", "Laptop bag", "Phone case", 
+    "Keychain", "Car keys", "House keys", "Book", "Magazine", "TV remote", "Coffee mug", 
+    "Water bottle", "Lunchbox", "Thermos", "Plate", "Bowl", "Cup", "Spoon", "Fork", "Knife", 
+    "Cutting board", "Pot", "Pan", "Kettle", "Coffee machine", "Microwave", "Refrigerator", 
+    "Toaster", "Blender", "Juicer", "Can opener", "Peeler", "Grater", "Salt shaker", 
+    "Pepper shaker", "Sugar jar", "Dishwashing soap", "Sponge", "Trash bag", "Mop", "Broom", 
+    "Dustpan", "Cleaning cloth", "Vacuum cleaner", "Laundry detergent", "Fabric softener", 
+    "Iron", "Ironing board", "Sewing kit", "Hangers", "Shoe rack", "Bed", "Pillow", "Blanket", 
+    "Bedsheet", "Mattress", "Curtains", "Curtain rod", "Wall clock", "Calendar", "Photo frame", 
+    "Desk lamp", "Light bulbs", "Extension cord", "Flashlight", "Batteries", "Scissors", 
+    "Tape", "Glue", "Stapler", "Paper clips", "Rubber bands", "Highlighter", "Marker", 
+    "Eraser", "Whiteboard", "Whiteboard markers", "Corkboard", "Pushpins", "Calendar", 
+    "Planner", "Notepad", "Sticky notes", "File folder", "Binder", "Printer", "Printer paper", 
+    "Ink cartridge", "USB drive", "External hard drive", "Memory card", "Phone stand", "Mouse", 
+    "Keyboard", "Mousepad", "Webcam", "Speaker", "Bluetooth speaker", "HDMI cable", "Ethernet cable", 
+    "Adapter", "Wi-Fi router", "Modem", "Power strip", "Surge protector", "First aid kit", "Medicine", 
+    "Band-aids", "Thermometer", "Cough syrup", "Pain reliever", "Vitamins", "Cold pack", 
+    "Hot water bottle", "Eyeglass cleaner", "Lint roller", "Shoe polish", "Tissues", "Napkins", 
+    "Wet wipes", "Cotton swabs", "Cotton balls", "Makeup", "Makeup remover", "Hair ties", 
+    "Hairpins", "Nail polish", "Nail clippers", "Nail file", "Tweezers", "Shaving cream", 
+    "Shaving razor", "Beard oil", "Beard comb", "Face mask", "Hand cream", "Foot cream", 
+    "Pedicure kit", "Hair gel", "Hair spray", "Hair straightener", "Hair curler", "Electric razor", 
+    "Toothpicks", "Floss", "Dental picks", "Mouthwash", "Air freshener", "Perfumed candles", 
+    "Incense", "Lighter", "Matches", "Yoga mat", "Dumbbells", "Resistance bands", "Exercise ball", 
+    "Jump rope", "Water filter",
   ];
 
   const toggleCube = () => {
@@ -33,11 +100,17 @@ const MysteryCube = () => {
 
   const revealProduct = () => {
     const remainingProducts = productList.filter(product => !products.includes(product));
-    const randomProduct = remainingProducts[Math.floor(Math.random() * remainingProducts.length)];
+  
+    if (remainingProducts.length === 0) return;
+  
+    const randomIndex = crypto.getRandomValues(new Uint32Array(1))[0] % remainingProducts.length;
+    const randomProduct = remainingProducts[randomIndex];
+  
     setProducts(prevProducts => [...prevProducts, randomProduct]);
     setSelectedProduct(randomProduct);
     setGlowColor("rgba(69,185,251,0.33)");
   };
+  
 
   const resetGame = () => {
     setIsOpen(false);
