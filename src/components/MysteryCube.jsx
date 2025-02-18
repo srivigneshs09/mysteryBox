@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SpotlightCard from "./SpotlightCard";
 import Counter from "./Counter";
+import "../App.css";
 
 const MysteryCube = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ const MysteryCube = () => {
     "Camera", "Speaker", "Keyboard", "Mouse", "Drone",
     "Printer", "Smart Home Device", "VR Headset", "Gaming Console",
     "Router", "Gamepad", "External Hard Drive", "Webcam",
-    "Projector", "Flash Drive"
+    "Projector", "Flash Drive",
   ];
 
   const toggleCube = () => {
@@ -47,40 +48,40 @@ const MysteryCube = () => {
   };
 
   return (
-    <div className="bg-black h-screen w-screen p-4 flex flex-col justify-center items-center overflow-hidden px-4 lg:px-0">
-      {/* Counter - Larger on Desktop */}
+    <div className="flex flex-col items-center justify-center w-full overflow-hidden">
+      {/* Counter */}
       <Counter
         value={clicks}
         places={[10, 1]}
-        fontSize={100} 
-        padding={10}
-        gap={12}
+        fontSize={60} /* Adjusted for mobile */
+        padding={6}
+        gap={10}
         textColor="white"
         fontWeight={900}
       />
 
-      {/* Cube Container - Bigger on Larger Screens */}
+      {/* Cube Container */}
       <div
         id="cube"
-        className="relative flex justify-center items-center cursor-pointer animate-floating mt-20"
+        className="relative flex justify-center items-center cursor-pointer animate-floating mt-40"
         onClick={toggleCube}
       >
         {/* Glow Effect */}
         <div
-          className="absolute"
+          className="absolute rounded-full"
           style={{
             zIndex: -2,
-            width: "200px",
-            height: "120px",
+            width: "150px",
+            height: "80px",
             backgroundColor: glowColor,
             filter: "blur(20px)",
-            margin: "60px 0",
+            margin: "50px 0",
           }}
         ></div>
 
         {/* Cube Faces */}
         <div
-          className={`cube back absolute bg-cover bg-center transition-all duration-700 w-48 h-48 lg:w-64 lg:h-64 ${
+          className={`cube back absolute bg-cover bg-center transition-all duration-700 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 ${
             isOpen ? "opacity-10" : "opacity-100"
           }`}
           style={{
@@ -90,8 +91,8 @@ const MysteryCube = () => {
         ></div>
 
         <div
-          className={`cube top absolute bg-cover bg-center transition-all duration-700 w-48 h-48 lg:w-64 lg:h-64 ${
-            isOpen ? "translate-y-[-4rem] opacity-10" : "translate-y-0 opacity-100"
+          className={`cube top absolute bg-cover bg-center transition-all duration-700 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 ${
+            isOpen ? "translate-y-[-2rem] opacity-10" : "translate-y-0 opacity-100"
           }`}
           style={{
             backgroundImage:
@@ -100,8 +101,8 @@ const MysteryCube = () => {
         ></div>
 
         <div
-          className={`cube left absolute bg-cover bg-center transition-all duration-700 w-48 h-48 lg:w-64 lg:h-64 ${
-            isOpen ? "translate-x-[-4rem] opacity-10" : "translate-x-0 opacity-100"
+          className={`cube left absolute bg-cover bg-center transition-all duration-700 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 ${
+            isOpen ? "translate-x-[-2rem] opacity-10" : "translate-x-0 opacity-100"
           }`}
           style={{
             backgroundImage:
@@ -110,8 +111,8 @@ const MysteryCube = () => {
         ></div>
 
         <div
-          className={`cube right absolute bg-cover bg-center transition-all duration-700 w-48 h-48 lg:w-64 lg:h-64 ${
-            isOpen ? "translate-x-[4rem] opacity-10" : "translate-x-0 opacity-100"
+          className={`cube right absolute bg-cover bg-center transition-all duration-700 w-40 h-40 sm:w-48 sm:h-48 lg:w-64 lg:h-64 ${
+            isOpen ? "translate-x-[2rem] opacity-10" : "translate-x-0 opacity-100"
           }`}
           style={{
             backgroundImage:
@@ -121,43 +122,30 @@ const MysteryCube = () => {
 
         {/* Selected Product Name */}
         {isOpen && (
-          <div
-            className="absolute text-white text-lg lg:text-2xl font-bold transition-all duration-700"
-            style={{
-              zIndex: 1,
-              opacity: isOpen ? 1 : 0,
-              top: "50%",
-              transform: "translateY(-50%)",
-            }}
-          >
+          <div className="absolute text-white text-3xl md:text-4xl font-bold transition-all duration-700 top-1/2 transform -translate-y-1/2">
             {selectedProduct}
           </div>
         )}
       </div>
 
-      {/* Reset Button - Large & Centered */}
-      <div className="mt-25 text-white text-center">
-  <button
-    onClick={resetGame}
-    className="mt-4 px-6 py-3 lg:px-8 lg:py-4 text-white text-lg lg:text-xl font-bold rounded-md transition-all"
-  >
-    Reset Game
-  </button>
-</div>
-
+      {/* Reset Button */}
+      <button
+        onClick={resetGame}
+        className="mt-56 px-6 py-3 text-white text-lg md:text-xl font-bold rounded-md transition-all border border-white hover:bg-white hover:text-black"
+      >
+        Reset Game
+      </button>
 
       {/* SpotlightCard appears after 3 clicks */}
       {clicks === 0 && (
-        <SpotlightCard className="mt-8 p-6 lg:p-10 bg-gray-800 text-white rounded-lg shadow-lg w-full max-w-md lg:max-w-lg">
-          <h2 className="text-2xl lg:text-3xl font-bold mb-4">Your Products</h2>
-          <ul className="list-disc pl-5 text-lg lg:text-xl">
+        <SpotlightCard className="mt-8 p-6 md:p-10 bg-gray-800 text-white rounded-lg shadow-lg w-full max-w-xs sm:max-w-md lg:max-w-lg">
+          <h2 className="text-xl md:text-2xl font-bold mb-4">Your Products</h2>
+          <ul className="list-disc pl-5 text-lg">
             {products.map((product, index) => (
               <li key={index}>{product}</li>
             ))}
           </ul>
-          <p className="mt-4 text-lg lg:text-xl">
-            Now, combine these products into one unique product and sell it!
-          </p>
+          <p className="mt-4 text-lg">Now, combine these products into one unique product and sell it!</p>
         </SpotlightCard>
       )}
 
